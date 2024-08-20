@@ -1,14 +1,14 @@
 from collections import defaultdict
 import logging
 import time
-from aiohttp import web
+
 import string
 import random
 import asyncio
 from contextlib import contextmanager
 from pyrogram import Client
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from web_support import web_server
+
 from bot.config import Config
 from bot.workers import Worker
 from bot.utils.broadcast import Broadcast
@@ -35,23 +35,9 @@ class ScreenShotBot(Client):
 
     async def start(self):
         await super().start()
+        await self.process_pool.start()
         me = await self.get_me()
-        self.mention = me.mention
-        self.username = me.username
-        self.force_channel = Config.FORCE_SUB
-        if Config.FORCE_SUB:
-            try:
-                link = await self.export_chat_invite_link(Config.FORCE_SUB)
-                self.invitelink = link
-            except Exception as e:
-                logging.warning(e)
-                logging.warning("Make Sure Bot admin in force sub channel")
-                self.force_channel = None
-        app = Worker.AppRunner(await web_server())
-        await app.setup()
-        bind_address = "0.0.0.0"
-        await web.TCPSite(app, bind_address, Config.PORT).start()
-        logging.info(f"{me.first_name} ✅✅ BOT started successfully ✅✅")
+        print(f"New session started for {me.first_name}({me.username})")
 
     async def stop(self):
         await self.process_pool.stop()
