@@ -8,7 +8,7 @@ import asyncio
 from contextlib import contextmanager
 from pyrogram import Client
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from plugins.web_support import web_server
+from web_support import web_server
 from bot.config import Config
 from bot.workers import Worker
 from bot.utils.broadcast import Broadcast
