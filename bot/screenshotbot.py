@@ -27,7 +27,7 @@ class ScreenShotBot(Client):
             plugins=dict(root="bot/plugins"),
             sleep_threshold=15,
         )
-        self.process_pool = web()
+        self.process_pool = Worker()
         self.CHAT_FLOOD = defaultdict(
             lambda: int(time.time()) - Config.SLOW_SPEED_DELAY - 1
         )
