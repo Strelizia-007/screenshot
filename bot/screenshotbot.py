@@ -5,7 +5,7 @@ import string
 import random
 import asyncio
 from contextlib import contextmanager
-
+from plugins.web_support import web_server
 from pyrogram import Client
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
@@ -47,7 +47,7 @@ class ScreenShotBot(Client):
                 logging.warning(e)
                 logging.warning("Make Sure Bot admin in force sub channel")
                 self.force_channel = None
-        app = Worker.AppRunner(await Worker_server())
+        app = web.AppRunner(await web_server())
         await app.setup()
         bind_address = "0.0.0.0"
         await web.TCPSite(app, bind_address, Config.PORT).start()
