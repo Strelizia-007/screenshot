@@ -47,7 +47,7 @@ class ScreenShotBot(Client):
                 logging.warning(e)
                 logging.warning("Make Sure Bot admin in force sub channel")
                 self.force_channel = None
-        app = web.AppRunner(await web_server())
+        app = Worker.AppRunner(await Worker_server())
         await app.setup()
         bind_address = "0.0.0.0"
         await web.TCPSite(app, bind_address, Config.PORT).start()
