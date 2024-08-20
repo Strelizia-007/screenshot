@@ -9,7 +9,7 @@ from contextlib import contextmanager
 from web import web_server
 from pyrogram import Client
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-
+from plugins.web_support import web_server
 from bot.config import Config
 from bot.workers import Worker
 from bot.utils.broadcast import Broadcast
@@ -48,7 +48,7 @@ class ScreenShotBot(Client):
                 logging.warning(e)
                 logging.warning("Make Sure Bot admin in force sub channel")
                 self.force_channel = None
-        app = web.AppRunner(await web_server())
+        app = Worker.AppRunner(await web_server())
         await app.setup()
         bind_address = "0.0.0.0"
         await web.TCPSite(app, bind_address, Config.PORT).start()
