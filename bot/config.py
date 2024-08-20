@@ -2,6 +2,7 @@ import os
 
 
 class Config:
+    FORCE_SUB = os.environ.get("FORCE_SUB", "")
     PORT = os.environ.get("PORT", "8080")
     WEBHOOK = os.environ.get("WEBHOOK", "True")
     API_ID = os.environ.get("API_ID", "27194346")
