@@ -6,7 +6,7 @@ import string
 import random
 import asyncio
 from contextlib import contextmanager
-from plugins.web_support import web_server
+from web import web_server
 from pyrogram import Client
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
