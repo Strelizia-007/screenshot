@@ -59,5 +59,5 @@ async def __(c, m):
                 neko_link = f"https://nekobin.com/{resp['result']['key']}"
         logger.debug(neko_link)
         await m.edit_message_reply_markup(
-            InlineKeyboardMarkup([[InlineKeyboardButton("Web URL", url=neko_link)]])
+            InlineKeyboardMarkup([[InlineKeyboardButton("𝗪𝗲𝗕 𝗨𝗥𝗟 ⚡", url=neko_link)]])
         )
