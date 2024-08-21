@@ -7,7 +7,6 @@ from urllib.parse import urljoin
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 from bot.config import Config
-message_id
 
 log = logging.getLogger(__name__)
 
@@ -74,7 +73,7 @@ class Utilities:
 
     @staticmethod
     def generate_stream_link(media_msg):
-        file_id = media_msg.message_id
+        file_id = media_msg #.message_id
         chat_id = media_msg.chat.id
         return urljoin(Config.HOST, f"file/{chat_id}/{file_id}")
 
